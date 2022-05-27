@@ -18,3 +18,5 @@ typedef struct BST
 #endif // !_BST_ADT_H
 
 void initBST(BST* bst);
+TreeNode* createNode();
+void insertBST(BST* bst, int value);
