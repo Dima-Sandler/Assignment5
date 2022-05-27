@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "BST.h"
 
@@ -8,6 +9,7 @@ void initBST(BST* bst) {
 TreeNode* createNode(int value) {
 	TreeNode *treeNode = (TreeNode*)malloc(sizeof(TreeNode));
 	
+	// check if malloc succeeded
 	if (treeNode) {
 		treeNode->left = treeNode->right = NULL;
 		treeNode->element = value;
@@ -18,51 +20,48 @@ TreeNode* createNode(int value) {
 	return treeNode;
 }
 
-void insertBST(BST* bst, int value) {
-	TreeNode* root = bst->root, * newNode = createNode(value);
-	
-	if (newNode == NULL) {
-		puts("Failed to create a new node");
-		return;
-	}
-
-	if (bst->root == NULL) {
-		bst->root = newNode;
-		return;
-	}
-
-	if (value <= root->element) 
-		if(root->left == NULL) // stop condition
-			root->left->element = value;
+addNode(TreeNode* root, TreeNode* node) {
+	if (node->element <= root->element)
+		if (root->left == NULL) // stop condition
+			root->left = node;
 		else
-			insertBST(root->left, value);
-
-	if (value > root->element) 
+			addNode(root->left, node);
+	else if (node->element > root->element)
 		if (root->right == NULL) // stop condition
-			root->right->element = value;
+			root->right = node;
 		else
-			insertBST(root->right, value);
+			addNode(root->right, node);
 }
 
+a_addNode(TreeNode** root, TreeNode* node) {
+	if (*root == NULL)
+	{
+
+	}
+}
+
+
+
 void a_insertBST(BST* bst, int value) {
-	TreeNode* root = bst->root, * newNode = createNode(value);
+	TreeNode* newNode = createNode(value);
 
-	if (newNode == NULL) {
+	// check if the node is created
+	if (newNode)
+		a_addNode(&bst->root, newNode);
+	else
 		puts("Failed to create a new node");
-		return;
-	}
+}
 
-	if (bst->root == NULL) {
-		bst->root = newNode;
-		return;
-	}
-
-	if (value <= root->element)
-		insertBST(root->left, value);
-
-	if (value > root->element)
-		if (root->right == NULL) // stop condition
-			root->right->element = value;
+void insertBST(BST* bst, int value) {
+	TreeNode* newNode = createNode(value);
+	
+	// check if the node is created
+	if (newNode)
+		// check if the tree is empty
+		if (bst->root == NULL)
+			bst->root = newNode;
 		else
-			insertBST(root->right, value);
+			addNode(bst->root, newNode);
+	else
+		puts("Failed to create a new node");
 }
