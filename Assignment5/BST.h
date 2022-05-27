@@ -16,3 +16,5 @@ typedef struct BST
 }BST;
 
 #endif // !_BST_ADT_H
+
+void initBST(BST* bst);
