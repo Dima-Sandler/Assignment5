@@ -5,27 +5,64 @@ void initBST(BST* bst) {
 	bst->root = NULL;
 }
 
-TreeNode* createNode() {
-	int temp = (TreeNode*)calloc(sizeof(TreeNode));
-	if (!temp)
-		exit(1);
-	return temp;
+TreeNode* createNode(int value) {
+	TreeNode *treeNode = (TreeNode*)malloc(sizeof(TreeNode));
+	
+	if (treeNode) {
+		treeNode->left = treeNode->right = NULL;
+		treeNode->element = value;
+	}
+	else
+		perror("Failed to allocate memory");
+
+	return treeNode;
 }
 
 void insertBST(BST* bst, int value) {
-	if (bst->root == NULL)
+	TreeNode* root = bst->root, * newNode = createNode(value);
+	
+	if (newNode == NULL) {
+		puts("Failed to create a new node");
 		return;
+	}
 
-	if (value <= bst->root->element) 
-		if (bst->root->left->left == NULL)
-			bst->root->left->element = value;
-		else
-			insertBST(bst->root->left, value);
+	if (bst->root == NULL) {
+		bst->root = newNode;
+		return;
+	}
 
-	if (value > bst->root->element)
-		if (bst->root->right == NULL)
-			bst->root->right->element = value;
+	if (value <= root->element) 
+		if(root->left == NULL) // stop condition
+			root->left->element = value;
 		else
-			insertBST(bst->root->right, value);
+			insertBST(root->left, value);
+
+	if (value > root->element) 
+		if (root->right == NULL) // stop condition
+			root->right->element = value;
+		else
+			insertBST(root->right, value);
 }
 
+void a_insertBST(BST* bst, int value) {
+	TreeNode* root = bst->root, * newNode = createNode(value);
+
+	if (newNode == NULL) {
+		puts("Failed to create a new node");
+		return;
+	}
+
+	if (bst->root == NULL) {
+		bst->root = newNode;
+		return;
+	}
+
+	if (value <= root->element)
+		insertBST(root->left, value);
+
+	if (value > root->element)
+		if (root->right == NULL) // stop condition
+			root->right->element = value;
+		else
+			insertBST(root->right, value);
+}
