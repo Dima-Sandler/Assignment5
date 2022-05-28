@@ -20,28 +20,26 @@ TreeNode* createNode(int value) {
 	return treeNode;
 }
 
-//void addNode(TreeNode* root, TreeNode* node) {
-//	if (node->element <= root->element)
-//		if (root->left == NULL) // stop condition
-//			root->left = node;
-//		else
-//			addNode(root->left, node);
-//	else
-//		if (root->right == NULL) // stop condition
-//			root->right = node;
-//		else
-//			addNode(root->right, node);
-//}
+void addNode(TreeNode* root, TreeNode* node) {
+	if (node->element <= root->element)
+		if (root->left == NULL) // stop condition
+			root->left = node;
+		else
+			addNode(root->left, node);
+	else if (root->right == NULL) // stop condition
+		root->right = node;
+	else
+		addNode(root->right, node);
+}
 
 void alt_addNode(TreeNode** root, TreeNode* node) {
-	if (*root == NULL) { // stop conditon
+	if (*root)
+		if (node->element <= (*root)->element)
+			alt_addNode(&(*root)->left, node);
+		else
+			alt_addNode(&(*root)->right, node);
+	else // base case
 		*root = node;
-		return;
-	}
-	if (node->element <= (*root)->element)
-		alt_addNode(&(*root)->left, node);
-	else
-		alt_addNode(&(*root)->right, node);
 }
 
 //void insertBST(BST* bst, int value) {
