@@ -15,8 +15,10 @@ typedef struct BST
     TreeNode* root;
 }BST;
 
+void initBST(BST*);
+void addLeaf(BST**);
+void insertBST(BST*, int);
+
 #endif // !_BST_ADT_H
 
-void initBST(BST* bst);
-TreeNode* createNode();
-void insertBST(BST* bst, int value);
+
