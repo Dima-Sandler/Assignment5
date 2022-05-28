@@ -20,36 +20,28 @@ TreeNode* createNode(int value) {
 	return treeNode;
 }
 
-addNode(TreeNode* root, TreeNode* node) {
+void addNode(TreeNode* root, TreeNode* node) {
 	if (node->element <= root->element)
 		if (root->left == NULL) // stop condition
 			root->left = node;
 		else
 			addNode(root->left, node);
-	else if (node->element > root->element)
+	else
 		if (root->right == NULL) // stop condition
 			root->right = node;
 		else
 			addNode(root->right, node);
 }
 
-a_addNode(TreeNode** root, TreeNode* node) {
-	if (*root == NULL)
-	{
-
+void adv_addNode(TreeNode** root, TreeNode* node) {
+	if (*root == NULL) { // stop conditon
+		*root = node;
+		return;
 	}
-}
-
-
-
-void a_insertBST(BST* bst, int value) {
-	TreeNode* newNode = createNode(value);
-
-	// check if the node is created
-	if (newNode)
-		a_addNode(&bst->root, newNode);
+	if (node->element <= (*root)->element)
+		adv_addNode(&(*root)->left, node);
 	else
-		puts("Failed to create a new node");
+		adv_addNode(&(*root)->right, node);
 }
 
 void insertBST(BST* bst, int value) {
@@ -65,3 +57,14 @@ void insertBST(BST* bst, int value) {
 	else
 		puts("Failed to create a new node");
 }
+
+void adv_insertBST(BST* bst, int value) {
+	TreeNode* newNode = createNode(value);
+
+	// check if the node is created
+	if (newNode)
+		adv_addNode(&bst->root, newNode);
+	else
+		puts("Failed to create a new node");
+}
+
