@@ -14,15 +14,6 @@ void initBST(BST* bst) {
 	bst->root = NULL;
 }
 
-void addLeaf(TreeNode** root, TreeNode* leaf) {
-	if (*root == NULL) // base case
-		*root = leaf;
-	else if (leaf->element <= (*root)->element)
-		addLeaf(&(*root)->left, leaf); // go left
-	else
-		addLeaf(&(*root)->right, leaf); // go right
-}
-
 void insertBST(BST* bst, int value) {
 	TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
 	CHECK_ALLOCATION(newNode);
@@ -31,17 +22,31 @@ void insertBST(BST* bst, int value) {
 	newNode->left = newNode->right = NULL;
 	newNode->element = value;
 	
-	addLeaf(&bst->root, newNode);
+	insert(&bst->root, newNode);
+}
+
+void insert(TreeNode** root, TreeNode* leaf) {
+	if (*root == NULL) // base case
+		*root = leaf;
+	else if (leaf->element <= (*root)->element)
+		insert(&(*root)->left, leaf); // go left
+	else
+		insert(&(*root)->right, leaf); // go right
 }
 
 void printTreeInorder(BST* bst) {
-	inorder(bst->root);
+	if (bst->root)
+		inorder(bst->root);
+	else
+		puts("The tree is empty");
 }
 
-void inorder(TreeNode* node) {
-	if (node != NULL) {
-		inorder(node->left);
-		printf("%d", node->element);
-		inorder(node->right);
+void inorder(TreeNode* root) {
+	if (root) {
+		inorder(root->left);
+		printf("%d", root->element);
+		inorder(root->right);
 	}
 }
+
+

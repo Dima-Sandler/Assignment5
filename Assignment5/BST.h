@@ -16,10 +16,10 @@ typedef struct BST
 }BST;
 
 void initBST(BST*);
-void addLeaf(TreeNode**, TreeNode*);
+void insert(TreeNode**, TreeNode*);
 void insertBST(BST*, int);
-void printTreeInorder(BST*);
 void inorder(TreeNode*);
+void printTreeInorder(BST*);
 
 #endif // !_BST_ADT_H
 
