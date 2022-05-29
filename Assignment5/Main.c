@@ -2,5 +2,9 @@
 #include "BST.h"
 #include "TreePrintLibrary.h"
 
-
+void main() {
+	BST bst;
+	
+	initBST(&bst);	
+}
 
