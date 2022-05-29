@@ -16,7 +16,7 @@ typedef struct BST
 }BST;
 
 void initBST(BST*);
-void addLeaf(BST**);
+void addLeaf(TreeNode**, TreeNode*);
 void insertBST(BST*, int);
 
 #endif // !_BST_ADT_H

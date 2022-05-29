@@ -5,14 +5,6 @@
 void main() {
 	BST bst;
 	
-	
-	
-	
-	
-	print_ascii_tree()
-
-
-
-
+	initBST(&bst);	
 }
 

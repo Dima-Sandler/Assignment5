@@ -13,21 +13,21 @@
 void initBST(BST* bst) {
 	bst->root = NULL;
 }
-void addLeaf(TreeNode** root, TreeNode* node) {
+void addLeaf(TreeNode** root, TreeNode* leaf) {
 	if (*root == NULL) // base case
-		*root = node;
-	else if (node->element <= (*root)->element)
-		addLeaf(&(*root)->left, node); // go left
+		*root = leaf;
+	else if (leaf->element <= (*root)->element)
+		addLeaf(&(*root)->left, leaf); // go left
 	else
-		addLeaf(&(*root)->right, node); // go right
+		addLeaf(&(*root)->right, leaf); // go right
 }
 void insertBST(BST* bst, int value) {
-	TreeNode* newLeaf = (TreeNode*)malloc(sizeof(TreeNode));
-	CHECK_ALLOCATION(newLeaf);
+	TreeNode* newNode = (TreeNode*)malloc(sizeof(TreeNode));
+	CHECK_ALLOCATION(newNode);
 	
 	// initialize the new node
-	newLeaf->left = newLeaf->right = NULL;
-	newLeaf->element = value;
+	newNode->left = newNode->right = NULL;
+	newNode->element = value;
 	
-	addLeaf(&bst->root, newLeaf);
+	addLeaf(&bst->root, newNode);
 }
