@@ -18,6 +18,8 @@ typedef struct BST
 void initBST(BST*);
 void addLeaf(TreeNode**, TreeNode*);
 void insertBST(BST*, int);
+void printTreeInorder(BST* bst);
+void inorder(TreeNode* node);
 
 #endif // !_BST_ADT_H
 
