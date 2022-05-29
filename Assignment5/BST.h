@@ -20,3 +20,5 @@ typedef struct BST
 void initBST(BST* bst);
 TreeNode* createNode();
 void insertBST(BST* bst, int value);
+void printTreeInorder(BST* bst);
+void inorder(BST* bst);

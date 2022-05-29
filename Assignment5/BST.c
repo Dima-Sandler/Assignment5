@@ -20,17 +20,17 @@ TreeNode* createNode(int value) {
 	return treeNode;
 }
 
-void addNode(TreeNode* root, TreeNode* node) {
-	if (node->element <= root->element)
-		if (root->left == NULL) // stop condition
-			root->left = node;
-		else
-			addNode(root->left, node);
-	else if (root->right == NULL) // stop condition
-		root->right = node;
-	else
-		addNode(root->right, node);
-}
+//void addNode(TreeNode* root, TreeNode* node) {
+//	if (node->element <= root->element)
+//		if (root->left == NULL) // stop condition
+//			root->left = node;
+//		else
+//			addNode(root->left, node);
+//	else if (root->right == NULL) // stop condition
+//		root->right = node;
+//	else
+//		addNode(root->right, node);
+//}
 
 void alt_addNode(TreeNode** root, TreeNode* node) {
 	if (*root)
@@ -66,3 +66,16 @@ void alt_insertBST(BST* bst, int value) {
 		puts("Failed to create a new node");
 }
 
+void printTreeInorder(BST* bst) {
+
+}
+
+void inorder(BST* bst)
+{
+	if (bst->root != NULL)
+	{
+		inorder(bst->root->left);
+		printf("% d", bst->root->element);
+		inorder(bst->root->right);
+	}
+}
