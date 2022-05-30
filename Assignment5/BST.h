@@ -18,7 +18,7 @@ typedef struct BST
 void initBST(BST*);
 void insert(TreeNode**, TreeNode*);
 void insertBST(BST*, int);
-void inorder(TreeNode*);
+void inorder(TreeNode*, char);
 void printTreeInorder(BST*);
 
 #endif // !_BST_ADT_H
