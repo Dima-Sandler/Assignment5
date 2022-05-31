@@ -36,16 +36,16 @@ void insert(TreeNode** root, TreeNode* leaf) {
 
 void printTreeInorder(BST* bst) {
 	if (bst->root)
-		inorder(bst->root, 0);		 
+		inorder(bst->root);
 	else
 		puts("The tree is empty");
 }
 
-void inorder(TreeNode* root, char delim) {
+void inorder(TreeNode* root) {
 	if (root) {
-		inorder(root->left, ',');
-		printf("%d%c", root->element, delim);
-		inorder(root->right, ',');
+		inorder(root->left);
+		printf("%d", root->element);
+		inorder(root->right);
 	}
 }
 
