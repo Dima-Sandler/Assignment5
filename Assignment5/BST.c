@@ -49,4 +49,16 @@ void inorder(TreeNode* root) {
 	}
 }
 
+void destroyBST(BST* bst) {
+	destroy(bst->root);
+}
+
+void destroy(TreeNode* root) {
+	if (root) {
+		destroy(root->left);
+		destroy(root->right);
+		free(root);
+	}
+}
+
 
