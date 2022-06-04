@@ -75,11 +75,11 @@ TreeNode* findLast(TreeNode* root) {
 		return findLast(root->right);
 }
 
-int reversed(TreeNode* root, int N) {
+int reverse(TreeNode* root, int N) {
 	if (N == 1) // base case
 		return root->element;
 
-	return reversed(root, N - 1);
+	return reverse(root, N - 1);
 }
 
 
