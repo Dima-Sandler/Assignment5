@@ -22,6 +22,10 @@ void inorder(TreeNode*);
 void printTreeInorder(BST*);
 void destroyBST(BST* bst);
 void destroy(TreeNode*);
+int findIndexNFromLast(BST*, int);
+void reversed(TreeNode* root, int);
+TreeNode* findLast(TreeNode*);
+
 
 #endif // !_BST_ADT_H
 

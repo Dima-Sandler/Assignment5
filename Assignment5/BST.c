@@ -61,4 +61,19 @@ void destroy(TreeNode* root) {
 	}
 }
 
+int findIndexNFromLast(BST* bst, int N) {
+	if (bst->root == NULL)
+		return 0;
 
+}
+
+void reversed(TreeNode* root, int N) {
+
+}
+
+TreeNode* findLast(TreeNode* root) {
+	if (root->right == NULL) //base case
+		return root;
+	else
+		return findLast(root->right);
+}
