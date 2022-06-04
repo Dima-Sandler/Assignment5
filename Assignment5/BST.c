@@ -64,16 +64,22 @@ void destroy(TreeNode* root) {
 int findIndexNFromLast(BST* bst, int N) {
 	if (bst->root == NULL)
 		return 0;
-
-}
-
-void reversed(TreeNode* root, int N) {
-
+	
+	return reversed(findLast(bst->root), N);
 }
 
 TreeNode* findLast(TreeNode* root) {
-	if (root->right == NULL) //base case
+	if (root->right == NULL) // base case
 		return root;
 	else
 		return findLast(root->right);
 }
+
+int reversed(TreeNode* root, int N) {
+	if (N == 1) // base case
+		return root->element;
+
+	return reversed(root, N - 1);
+}
+
+
