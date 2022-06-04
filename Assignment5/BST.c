@@ -44,7 +44,7 @@ void printTreeInorder(BST* bst) {
 void inorder(TreeNode* root) {
 	if (root) {
 		inorder(root->left);
-		printf("%d", root->element);
+		printf("%d ", root->element);
 		inorder(root->right);
 	}
 }

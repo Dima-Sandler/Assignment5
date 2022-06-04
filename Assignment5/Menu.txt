@@ -1,0 +1,5 @@
+BST operations:
+
+	1. Graphic print
+	2. Add nodes
+	3. Inorder print 
