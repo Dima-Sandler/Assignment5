@@ -27,7 +27,9 @@ int find(TreeNode*, int);
 int reverse(TreeNode*, int);
 int sameHeightLeaves(BST*);
 TreeNode* findLast(TreeNode*);
-
+int sameHeightLeaves(BST* bst);
+int checkUtil(TreeNode*, int, int*);
+int check(TreeNode*);
 
 #endif // !_BST_ADT_H
 
