@@ -20,10 +20,12 @@ void insert(TreeNode**, TreeNode*);
 void insertBST(BST*, int);
 void inorder(TreeNode*);
 void printTreeInorder(BST*);
-void destroyBST(BST* bst);
+void destroyBST(BST*);
 void destroy(TreeNode*);
 int findIndexNFromLast(BST*, int);
+int find(TreeNode*, int);
 int reverse(TreeNode*, int);
+int sameHeightLeaves(BST*);
 TreeNode* findLast(TreeNode*);
 
 

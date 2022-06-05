@@ -51,6 +51,7 @@ void inorder(TreeNode* root) {
 
 void destroyBST(BST* bst) {
 	destroy(bst->root);
+	bst->root = NULL;
 }
 
 void destroy(TreeNode* root) {
@@ -65,7 +66,19 @@ int findIndexNFromLast(BST* bst, int N) {
 	if (bst->root == NULL)
 		return 0;
 	
-	return reversed(findLast(bst->root), N);
+	find(bst->root, N);
+}
+
+int find(TreeNode* root, int N) {
+	// reversed inorder
+	if (root) {
+		find(root->right, N);
+				
+		find(root->left, N);
+	}
+	else
+		return N - 1;
+
 }
 
 TreeNode* findLast(TreeNode* root) {
@@ -81,5 +94,7 @@ int reverse(TreeNode* root, int N) {
 
 	return reverse(root, N - 1);
 }
+
+// int sameHeightLeaves(BST* bst) {}
 
 
