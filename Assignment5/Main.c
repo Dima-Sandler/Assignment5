@@ -12,18 +12,24 @@ void main() {
 	insertBST(&bst, 1);
 	insertBST(&bst, 4);
 	print_ascii_tree(bst.root);
-	putchar('\n');
+	printf("\n");
 
 	insertBST(&bst, 9);
 	print_ascii_tree(bst.root);
-	putchar('\n');
+	printf("\n");
 
-	insertBST(&bst, 5);
+	/*insertBST(&bst, 5);
 	print_ascii_tree(bst.root);
-	putchar('\n');
+	printf("\n");*/
 
-	//printf("%d ", findIndexNFromLast(&bst, 5));
-	//printf("%d\n", findIndexNFromLast(&bst, 5));
+	printTreeInorder(&bst);
+	printf("\n\n");
+
+	insertBST(&bst, 10);
+	insertBST(&bst, 11);
+
+	printf("%d\n", findIndexNFromLast(&bst, 3));
+	printf("%d\n", findIndexNFromLast(&bst, 6));
 	
 	destroyBST(&bst);
 }
