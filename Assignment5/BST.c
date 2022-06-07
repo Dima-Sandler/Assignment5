@@ -65,8 +65,9 @@ void destroy(TreeNode* root) {
 int findIndexNFromLast(BST* bst, int N) {
 	TreeNode* node = find(bst->root, &N);
 	
-	return node->element;
-}
+	if (node)	
+		return node->element;
+} // return value is undefined if N is invalid
 
 TreeNode* find(TreeNode* root, int* N) {
 	if (!root)  // stop condition
