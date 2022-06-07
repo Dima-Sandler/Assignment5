@@ -25,11 +25,28 @@ void main() {
 	printTreeInorder(&bst);
 	printf("\n\n");
 
-	insertBST(&bst, 10);
-	insertBST(&bst, 11);
+	/*insertBST(&bst, 10);
+	insertBST(&bst, 11);*/
 
 	printf("%d\n", findIndexNFromLast(&bst, 3));
-	printf("%d\n", findIndexNFromLast(&bst, 6));
+	printf("%d\n\n", findIndexNFromLast(&bst, 6));
+	
+	/*insertBST(&bst, 8);
+	insertBST(&bst, 1);
+	insertBST(&bst, 2);
+	insertBST(&bst, 5);
+	insertBST(&bst, 8);
+	insertBST(&bst, 9);*/
+	
+	insertBST(&bst, 1);
+	insertBST(&bst, 2);
+	insertBST(&bst, 4);
+	insertBST(&bst, 5);
+
+	print_ascii_tree(bst.root);
+	printf("\n");
+	
+	printf("%d\n", sameHeightLeaves(&bst));
 	
 	destroyBST(&bst);
 }
